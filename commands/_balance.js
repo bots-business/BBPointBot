@@ -4,8 +4,11 @@
   need_reply: 
   auto_retry_time: 
   answer: 
-  keyboard: 
-  aliases: 
+
+  <<KEYBOARD
+
+  KEYBOARD
+  aliases: 💎 balance
 CMD*/
 
 let res = Libs.ResourcesLib.userRes("BBPoint");

@@ -7,8 +7,6 @@
   <<ANSWER
 Hello!
 
-I am BB point bot. I am under development.⚒
-
 💎 - it is *BB Point*.
 
 *You can spend it:*
@@ -21,15 +19,15 @@ Just start collecting thems!
 
 *You can get 💎:*
 - for good answer and help in BB chat
+- for Translations
+- others (please write to admin)
 
 Check current /balance
 
+See transaction history in: @bbpoints 
 
   ANSWER
-
-  <<KEYBOARD
-
-  KEYBOARD
+  keyboard: 💎 Balance, 🌀 Exchange,\n🤠 Masters, 📊 Usage
   aliases: 
 CMD*/
 
