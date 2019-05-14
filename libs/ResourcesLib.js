@@ -228,7 +228,9 @@ commonResource = function(objName, objID, resName){
 
     verifyNumber: function(value){ 
       if(!this.isNumber(value)){
-        throw 'ResLib: value must be number only' 
+        let evalue = "";
+        if(typeof(value)!="undefined"){ evalue = JSON.stringify(value) }
+        throw 'ResLib: value must be number only. It is not number: ' + typeof(value) + " " + evalue;
       }
     },
 
