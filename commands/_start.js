@@ -3,27 +3,9 @@
   help: 
   need_reply: 
   auto_retry_time: 
+  folder: 
 
   <<ANSWER
-Hello!
-
-I am BB point bot. I am under development.⚒
-
-💎 - it is *BB Point*.
-
-*You can spend it:*
-- for iterations
-- for discount
-- for good help from admin
-
-All conditions will be later!
-Just start collecting thems!
-
-*You can get 💎:*
-- for good answer and help in BB chat
-
-Check current /balance
-
 
   ANSWER
 
@@ -33,3 +15,14 @@ Check current /balance
   aliases: 
 CMD*/
 
+if(chat.chat_type!="private"){ return }
+
+Bot.runCommand("/start-info")
+
+if(params&&params.includes("req")&&params.includes("-points-to-")){
+  Bot.runCommand("/onRequest " + params);
+}
+
+if(params&&(params=="link")){
+  Bot.runCommand("/link")
+}

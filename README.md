@@ -16,7 +16,7 @@ Just start collecting thems!
 You can get :gem::
 - for good answer and help in BB chat
 
-![](https://i.imgur.com/Ywh1Sjf.png)
+![](https://i.imgur.com/fw7HmsG.png)
 
 
 

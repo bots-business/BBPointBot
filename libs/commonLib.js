@@ -9,6 +9,12 @@ function getNameFor(member){
   return member.first_name ? member.first_name : member.last_name
 }
 
+function getLinkFor(member){
+  return "[" + getNameFor(member) + "](tg://user?id=" + member.telegramid + ")";
+}
+
 publish({
-    getNameFor: getNameFor
+    getNameFor: getNameFor,
+    getLinkFor: getLinkFor
 })
+
