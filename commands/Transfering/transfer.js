@@ -38,6 +38,7 @@ function successMessage(res, amount){
 
 function canBeAngry(amount){
   if(isAdmin()){ return true }  // admin can be very angry
+  if(canMasterRemove(amount)){return true}
   return amount >= 0
 }
 
@@ -53,13 +54,15 @@ function transferByUser(res, anotherRes, amount){
 
 function transfer(res, anotherRes, amount){
   if(!canBeAngry(amount)){ return }
-
   if(isAdmin()){
+    return anotherRes.add(amount);
+  }
+  if(canMasterRemove(amount)){
+    RemoveByMaster(amount)
     return anotherRes.add(amount);
   }
   return transferByUser(res, anotherRes, amount);
 }
-
 if(!options){ return }
 
 let amount = options.message;
