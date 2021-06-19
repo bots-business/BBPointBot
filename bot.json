@@ -1,6 +1,6 @@
 {
   "bb_sync_version":"1.0",
-  "name":"BBPointBot",
+  "name":"Soham_Demo_4_Bot",
   "csv_url":null,
-  "git_remote":"git@github.com:bots-business/BBPointBot.git"
+  "git_remote":"git@github.com:sohamdeogaonkar/BBPointBot.git"
 }

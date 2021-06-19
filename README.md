@@ -1,24 +1,5 @@
-# BBPointBot - chat bot
-It is repository for chat bot: [@BBPointBot](https://t.me/BBPointBot)
-
-I am BB point bot. I am under development.⚒
-
-:gem: - it is BB Point.
-
-You can spend it:
-- for iterations
-- for discount
-- for good help from admin
-
-All conditions will be later!
-Just start collecting thems!
-
-You can get :gem::
-- for good answer and help in BB chat
-
-![](https://i.imgur.com/fw7HmsG.png)
-
-
+# Soham_Demo_4_Bot - chat bot
+It is repository for chat bot: [@Soham_Demo_4_Bot](https://t.me/Soham_Demo_4_Bot)
 
 ## What it is?
 This repository can be imported to [Bots.Business](https://bots.business) as a worked chat bot.

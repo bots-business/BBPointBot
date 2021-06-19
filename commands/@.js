@@ -16,6 +16,55 @@ function isAdmin(){
   })
   return user.id == admin_id
 }
+var masters = {
+848823540: {
+daily_limit: 15,
+limit: 1}
+}
+
+function isMaster(){
+return masters[user.telegramid]
+}
+
+function masterRemoved(){
+return User.getProperty("masterRemoved",0)
+}
+
+function setMasterRemovedToZero(){
+User.setProperty("masterRemoved",0 ,"integer")
+}
+
+function canMasterRemove(value){
+if(value > 0){return false}
+var pvalue = -(value);
+if(!isMaster){return false}
+
+var masterRemovedAmount = masterRemoved()
+
+var lastmasterRemoved= User.getProperty("lastmasterRemoved")
+var now = new Date()
+
+if(lastmasterRemoved){
+var todays_date = Libs.DateTimeFormat.format(now, "d")
+var lastmasterRemoved_date = Libs.DateTimeFormat.format(lastmasterRemoved, "d")
+
+if (todays_date != lastmasterRemoved_date ) {
+setMasterRemovedToZero()
+masterRemovedAmount = 0
+}
+}
+
+if(masters[user.telegramid].limit < pvalue){return false}
+if(masters[user.telegramid].daily_limit < (masterRemovedAmount + pvalue)){return false}
+
+return true
+}
+
+function RemoveByMaster(amount){
+var masterRemovedAmount= masterRemoved()
+User.setProperty("masterRemoved",masterRemovedAmount-(amount) ,"integer")
+User.setProperty("lastmasterRemoved",new Date(), "datetime")
+}
 
 function isNumeric(value){
   return value.match(/^-{0,1}\d+$/)
