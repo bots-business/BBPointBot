@@ -1,1 +1,10 @@
+/*CMD
+  command: /masterRemoveablePoints
+  help: 
+  need_reply: true
+  auto_retry_time: 
+  folder: Master
+  keyboard: 
+  aliases: 
+CMD*/
 
