@@ -17,6 +17,22 @@ function isAdmin(){
   return user.id == admin_id
 }
 
+function canMasterRemove(value){
+if(value > 0){return false}
+var pvalue = -(value);
+var masterRemoveableLimit = Libs.ResourcesLib.userRes("masterRemoveableLimit");
+if(pvalue > masterRemoveableLimit.value()){return false}
+
+var masterRemoveablePoint = Libs.ResourcesLib.userRes("masterRemoveablePoint");
+if(masterRemoveablePoint.value() - pvalue < 0){return false}
+return true
+}
+
+function removeByMaster(amount){
+var masterRemoveablePoint = Libs.ResourcesLib.userRes("masterRemoveablePoint");
+masterRemoveablePoint.add(amount)
+}
+
 function isNumeric(value){
   return value.match(/^-{0,1}\d+$/)
 }
