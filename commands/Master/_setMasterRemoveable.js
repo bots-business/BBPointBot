@@ -12,15 +12,21 @@ Use /cancel to cancel the command
   aliases: 
 CMD*/
 
-if(!isAdmin){return}
-if(message == "/cancel"){
-Bot.sendMessage("Operantion Cancelled")
-return
+if (!isAdmin) {
+  return
 }
-var masterId = request.forward_from ?  request.forward_from.id : message
+if (message == "/cancel") {
+  Bot.sendMessage("Operantion Cancelled")
+  return
+}
+var masterId = request.forward_from ? request.forward_from.id : message
 
-Bot.sendMessage("*Please enter the amount for Master Removeable Points Once Per User*\nFor the user :- `" +  masterId  + "`\n\nUse /cancel to cancel the command")
+Bot.sendMessage(
+  "*Please enter the amount for Master Removeavle Points Once Per User*\nFor the user :- `" +
+    masterId +
+    "`\n\nUse /cancel to cancel the command"
+)
 Bot.run({
-command : "/setMasterRemoveableLimit",
-options : {masterId: masterId}
+  command: "/setMasterRemoveableLimit",
+  options: { masterId: masterId }
 })
