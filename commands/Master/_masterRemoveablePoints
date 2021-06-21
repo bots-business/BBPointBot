@@ -8,5 +8,7 @@
   aliases: 
 CMD*/
 
-var masterRemoveablePoint = Libs.ResourcesLib.userRes("masterRemoveablePoint");
-Bot.sendMessage("Your Master Removeable Points :- " + masterRemoveablePoint.value())
+var masterRemoveablePoint = Libs.ResourcesLib.userRes("masterRemoveablePoint")
+Bot.sendMessage(
+  "Your Master Removeable Points :- " + masterRemoveablePoint.value()
+)
