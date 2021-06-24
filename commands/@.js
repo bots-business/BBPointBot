@@ -17,6 +17,28 @@ function isAdmin(){
   return user.id == admin_id
 }
 
+function canRemoveByAngryPoints(value) {
+  if (value > 0) {
+    return false
+  }
+  var pvalue = -value // convert amount to positive
+  var AngryPointsLimit = Libs.ResourcesLib.userRes("AngryPointsLimit")
+  if (pvalue > AngryPointsLimit.value()) {
+    return false
+  }
+
+  var AngryPoints = Libs.ResourcesLib.userRes("AngryPoints")
+  if (AngryPoints.value() - pvalue < 0) {
+    return false
+  }
+  return true
+}
+
+function removeByAngryPoints(amount) {
+  var AngryPoints = Libs.ResourcesLib.userRes("AngryPoints")
+  AngryPoints.add(amount) //amount will be already negative
+}
+
 function isNumeric(value){
   return value.match(/^-{0,1}\d+$/)
 }
