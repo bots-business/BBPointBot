@@ -38,6 +38,7 @@ function successMessage(res, amount){
 
 function canBeAngry(amount){
   if(isAdmin()){ return true }  // admin can be very angry
+  if (canRemoveByAngryPoints(amount)) {return true}
   return amount >= 0
 }
 
@@ -56,6 +57,10 @@ function transfer(res, anotherRes, amount){
 
   if(isAdmin()){
     return anotherRes.add(amount);
+  }
+  if (canRemoveByAngryPoints(amount)) {
+    removeByAngryPoints(amount)
+    return anotherRes.add(amount)
   }
   return transferByUser(res, anotherRes, amount);
 }
