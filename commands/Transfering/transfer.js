@@ -36,8 +36,31 @@ function successMessage(res, amount){
   broadcastOperation(amount, user, transferred_to);
 }
 
+function canRemoveByAngryPoints(value) {
+  if (value > 0) {
+    return false
+  }
+  var angryPointsLimit = Libs.ResourcesLib.userRes("angryPointsLimit")
+  if (-value > angryPointsLimit.value()) {
+    return false
+  }
+
+  var angryPoints = Libs.ResourcesLib.userRes("angryPoints")
+  if (angryPoints.value() + value < 0) {
+    // value will be already negative
+    return false
+  }
+  return true
+}
+
+function removeAngryPoints(amount) {
+  var angryPoints = Libs.ResourcesLib.userRes("angryPoints")
+  angryPoints.add(amount) //amount will be already negative
+}
+
 function canBeAngry(amount){
   if(isAdmin()){ return true }  // admin can be very angry
+  if (canRemoveByAngryPoints(amount)) {return true}
   return amount >= 0
 }
 
@@ -57,6 +80,10 @@ function transfer(res, anotherRes, amount){
   if(isAdmin()){
     return anotherRes.add(amount);
   }
+  if (canRemoveByAngryPoints(amount)) {
+    removeAngryPoints(amount)
+    return anotherRes.add(amount)
+  }  
   return transferByUser(res, anotherRes, amount);
 }
 
