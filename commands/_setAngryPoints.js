@@ -20,7 +20,7 @@ var angryPointsLimit = Libs.ResourcesLib.anotherUserRes(
   "angryPointsLimit",
   masterId
 )
-AngryPointsLimit.set(parseInt(limit))
+angryPointsLimit.set(parseInt(limit))
 
 var sec_in_hr = 1 * 60 * 60
 var angryPoints = Libs.ResourcesLib.anotherUserRes("angryPoints", masterId)
