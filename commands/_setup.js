@@ -75,6 +75,53 @@ AdminPanel.setPanel({
   // force: true // default false - save fields values
 });
 
+var panel = {
+  title: "Angry Points",
+  description: "Setup for the master Removeable Points",
+  index: 2,
+  icon: "settings",
+  on_saving: {
+    command: "/setAngryPoints"
+  },
+  fields: [
+    {
+      name: "MasterId",
+      title: "Master Telegram ID",
+      description:
+        "you can get your Master id with BJS Bot.sendMessage(user.telegramid)",
+      type: "string",
+      placeholder: "master telegram id"
+    },
+    {
+      name: "Limit",
+      title: " Angry Points Limit",
+      description: "Enter the limit for removing Point for single request",
+      type: "integer",
+      placeholder: "1"
+    },
+    {
+      name: "HourlyGrowth",
+      title: "Angry Points Hourly Growth",
+      description: "Amount for Angry Points Growth per hours",
+      type: "integer",
+      placeholder: "2"
+    },
+    {
+      name: "MaxLimit",
+      title: " Angry Points Max Limit",
+      description: "Enter the Max limit of angry point each master can have",
+      type: "integer",
+      placeholder: "50"
+    }
+  ]
+}
+
+AdminPanel.setPanel({
+  panel_name: "AngryPoints",
+  data: panel
+  // force: true // default false - save fields values
+})
+
 Bot.sendMessage("Admin Panels setupped." + 
   "\n\nYour admin id is: ```" + user.id + "```" +
   "\n\nCur chat id is: ```" + chat.id + "```"
