@@ -36,12 +36,13 @@ function successMessage(res, amount){
   broadcastOperation(amount, user, transferred_to);
 }
 
-function canRemoveByAngryPoints(value) {
-  if (value > 0) {
+function canRemoveByAngryPoints(removalPoints) {
+  if (removalPoints > 0) {
     return false
   }
   var angryPointsLimit = Libs.ResourcesLib.userRes("angryPointsLimit")
-  if (-value > angryPointsLimit.value()) {
+  if (-removalPoints > angryPointsLimit.value()) {
+    // Master can remove points without exceeding the limit
     return false
   }
 
@@ -53,9 +54,9 @@ function canRemoveByAngryPoints(value) {
   return true
 }
 
-function removeAngryPoints(amount) {
+function removeAngryPoints(removalPoints) {
   var angryPoints = Libs.ResourcesLib.userRes("angryPoints")
-  angryPoints.add(amount) //amount will be already negative
+  angryPoints.add(removalPoints) //removalPoints will be already negative
 }
 
 function canBeAngry(amount){
