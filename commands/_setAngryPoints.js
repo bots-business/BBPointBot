@@ -9,6 +9,9 @@
   aliases: 
 CMD*/
 
+if(!user){return}
+//allowed to run through admin panel only
+
 var AngryPointsdata = AdminPanel.getPanel("AngryPoints")
 
 var masterId = AngryPointsdata.fields[0].value
