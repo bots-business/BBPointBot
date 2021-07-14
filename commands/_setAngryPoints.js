@@ -26,8 +26,8 @@ var angryPointsMaxLimit = Libs.ResourcesLib.anotherUserRes(
 angryPointsMaxLimit.set(parseInt(maxLimit))
 
 var sec_in_hr = 1 * 60 * 60
-var angryPoints = Libs.ResourcesLib.anotherUserRes("angryPoints", masterId)
-angryPoints.growth.add({
+var availableAngryPoints = Libs.ResourcesLib.anotherUserRes("availableAngryPoints", masterId)
+availableAngryPoints.growth.add({
   value: parseInt(hourlyGrowth),
   interval: sec_in_hr,
   max: parseInt(maxGrowthLimit)
