@@ -15,15 +15,15 @@ if(!user){return}
 var angryPointsPanel = AdminPanel.getPanel("AngryPoints")
 
 var masterId = angryPointsPanel.fields[0].value
-var limit = angryPointsPanel.fields[1].value
+var maxLimit = angryPointsPanel.fields[1].value
 var hourlyGrowth = angryPointsPanel.fields[2].value
 var maxGrowthLimit = angryPointsPanel.fields[3].value
 
-var angryPointsLimit = Libs.ResourcesLib.anotherUserRes(
-  "angryPointsLimit",
+var angryPointsMaxLimit = Libs.ResourcesLib.anotherUserRes(
+  "angryPointsMaxLimit",
   masterId
 )
-angryPointsLimit.set(parseInt(limit))
+angryPointsMaxLimit.set(parseInt(maxLimit))
 
 var sec_in_hr = 1 * 60 * 60
 var angryPoints = Libs.ResourcesLib.anotherUserRes("angryPoints", masterId)
@@ -31,16 +31,4 @@ angryPoints.growth.add({
   value: parseInt(hourlyGrowth),
   interval: sec_in_hr,
   max: parseInt(maxGrowthLimit)
-})
-
-//making the admin panel empty so that bot admin can add more masters
-
-angryPointsPanel.fields[0].value = ""
-angryPointsPanel.fields[1].value = ""
-angryPointsPanel.fields[2].value = ""
-angryPointsPanel.fields[3].value = ""
-
-AdminPanel.setPanel({
-  panel_name: "AngryPoints",
-  data: angryPointsPanel
 })
