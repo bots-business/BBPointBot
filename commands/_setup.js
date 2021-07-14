@@ -93,7 +93,7 @@ var panel = {
       placeholder: "master telegram id"
     },
     {
-      name: "Limit",
+      name: "MaxLimit",
       title: " Angry Points Limit",
       description: "Enter the limit for removing Point for single request",
       type: "integer",
@@ -107,7 +107,7 @@ var panel = {
       placeholder: "2"
     },
     {
-      name: "MaxLimit",
+      name: "MaxGrowthLimit",
       title: " Angry Points Max Limit",
       description: "Enter the Max limit of angry point each master can have",
       type: "integer",
