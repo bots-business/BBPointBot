@@ -46,8 +46,8 @@ function canRemoveByAngryPoints(removalPoints) {
     return false
   }
 
-  var angryPoints = Libs.ResourcesLib.userRes("angryPoints")
-  if (angryPoints.value() + removalPoints < 0) {
+  var availableAngryPoints = Libs.ResourcesLib.userRes("availableAngryPoints")
+  if (availableAngryPoints.value() + removalPoints < 0) {
     // value will be already negative
     return false
   }
@@ -55,8 +55,8 @@ function canRemoveByAngryPoints(removalPoints) {
 }
 
 function removeAngryPoints(removalPoints) {
-  var angryPoints = Libs.ResourcesLib.userRes("angryPoints")
-  angryPoints.add(removalPoints) //removalPoints will be already negative
+  var availableAngryPoints = Libs.ResourcesLib.userRes("availableAngryPoints")
+  availableAngryPoints.add(removalPoints) //removalPoints will be already negative
 }
 
 function canBeAngry(amount){
