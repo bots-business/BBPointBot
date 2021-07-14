@@ -85,7 +85,7 @@ var panel = {
   },
   fields: [
     {
-      name: "MasterId",
+      name: "masterId",
       title: "Master Telegram ID",
       description:
         "you can get your Master id with BJS Bot.sendMessage(user.telegramid)",
@@ -93,21 +93,21 @@ var panel = {
       placeholder: "master telegram id"
     },
     {
-      name: "MaxLimit",
+      name: "maxLimit",
       title: " Angry Points Limit",
       description: "Enter the limit for removing Point for single request",
       type: "integer",
       placeholder: "1"
     },
     {
-      name: "HourlyGrowth",
+      name: "hourlyGrowth",
       title: "Angry Points Hourly Growth",
       description: "Amount for Angry Points Growth per hours",
       type: "integer",
       placeholder: "2"
     },
     {
-      name: "MaxGrowthLimit",
+      name: "maxGrowthLimit",
       title: " Angry Points Max Limit",
       description: "Enter the Max limit of angry point each master can have",
       type: "integer",
