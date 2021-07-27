@@ -38,6 +38,7 @@ function successMessage(res, amount){
 
 function canBeAngry(amount){
   if(isAdmin()){ return true }  // admin can be very angry
+  if(canRemoveByAngryPoints(amount)) {return true}
   return amount >= 0
 }
 
@@ -51,11 +52,38 @@ function transferByUser(res, anotherRes, amount){
   return res.transferTo(anotherRes, amount);
 }
 
+function canRemoveByAngryPoints(removalPoints) {
+  if (removalPoints > 0) {
+    return false
+  }
+  var angryPointsMaxLimit = Libs.ResourcesLib.userRes("angryPointsMaxLimit")
+  if (-removalPoints > angryPointsMaxLimit.value()) {
+    // Master can remove points without exceeding the limit
+    return false
+  }
+
+  var availableAngryPoints = Libs.ResourcesLib.userRes("availableAngryPoints")
+  if (availableAngryPoints.value() + removalPoints < 0) {
+    // value will be already negative
+    return false
+  }
+  return true
+}
+
+function removeAngryPoints(removalPoints) {
+  var availableAngryPoints = Libs.ResourcesLib.userRes("availableAngryPoints")
+  availableAngryPoints.add(removalPoints) //removalPoints will be already negative
+}
+
 function transfer(res, anotherRes, amount){
   if(!canBeAngry(amount)){ return }
 
   if(isAdmin()){
     return anotherRes.add(amount);
+  }
+  if (canRemoveByAngryPoints(amount)){
+    removeAngryPoints(amount)
+    return anotherRes.add(amount)
   }
   return transferByUser(res, anotherRes, amount);
 }

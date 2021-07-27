@@ -9,6 +9,8 @@
   aliases: 
 CMD*/
 
+return // remove this for setup
+
 var panel = {
   // Panel title
   title: "Admin Information",
@@ -74,6 +76,55 @@ AdminPanel.setPanel({
   data: panel
   // force: true // default false - save fields values
 });
+
+
+
+var panel = {
+  title: "Angry Points",
+  description: "Setup for the master Removeable Points",
+  index: 2,
+  icon: "settings",
+  on_saving: {
+    command: "/setAngryPoints"
+  },
+  fields: [
+    {
+      name: "masterId",
+      title: "Master Telegram ID",
+      description:
+        "you can get your Master id with BJS Bot.sendMessage(user.telegramid)",
+      type: "string",
+      placeholder: "master telegram id"
+    },
+    {
+      name: "maxLimit",
+      title: " Angry Points Limit",
+      description: "Enter the limit for removing Point for single request",
+      type: "integer",
+      placeholder: "1"
+    },
+    {
+      name: "hourlyGrowth",
+      title: "Angry Points Hourly Growth",
+      description: "Amount for Angry Points Growth per hours",
+      type: "integer",
+      placeholder: "2"
+    },
+    {
+      name: "maxGrowthLimit",
+      title: " Angry Points Max Limit",
+      description: "Enter the Max limit of angry point each master can have",
+      type: "integer",
+      placeholder: "50"
+    }
+  ]
+}
+
+AdminPanel.setPanel({
+  panel_name: "AngryPoints",
+  data: panel
+})
+
 
 Bot.sendMessage("Admin Panels setupped." + 
   "\n\nYour admin id is: ```" + user.id + "```" +
