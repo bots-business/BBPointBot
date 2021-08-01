@@ -57,7 +57,7 @@ function canRemoveByAngryPoints(removalPoints) {
     return false
   }
   var angryPointsMaxLimit = Libs.ResourcesLib.userRes("angryPointsMaxLimit")
-  if(angryPointsMaxLimit.value = 0){return false}
+  if(angryPointsMaxLimit.value == 0){return false}
   if (-removalPoints > angryPointsMaxLimit.value()) {
     // Master can remove points without exceeding the limit
     return false
