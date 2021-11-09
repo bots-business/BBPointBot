@@ -10,7 +10,7 @@
 CMD*/
 
 //allowed to run through admin panel only
-if (!user) {
+if (user) {
   return
 }
 
