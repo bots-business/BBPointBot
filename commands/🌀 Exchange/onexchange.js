@@ -12,7 +12,7 @@ CMD*/
 let opts = options.options
 
 function getBrodcastMsg(){
-  let name = Libs.commonLib.getNameFor(user)
+  let name = Libs.commonLib.getLinkFor(user)
   
   let bbp_to_ep = name +
       ": exchange\n" +
