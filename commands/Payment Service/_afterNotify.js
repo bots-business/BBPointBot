@@ -22,7 +22,7 @@ res.transferTo(anotherRes, req.amount);
 broadcastOperation(
    req.amount,
    user,
-   { username: "id-" + req.transferred_to_tg_id }, 
+   { id: req.transferred_to_tg_id }, 
    "Request"
 )
 
