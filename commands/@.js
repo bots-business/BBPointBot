@@ -27,17 +27,19 @@ function broadcastToChanell(text){
     field_name: "InfoChannel" // field name
   })
 
-  Api.sendMessage({ chat_id: chanell, text: text  } );
+  Api.sendMessage({ chat_id: chanell, text: text, parse_mode: "Markdown" } );
 }
 
 function broadcastOperation(amount, from_user, to_user, operation){
   if(amount==0){ return }
+  
+  let prefix = "";
+  if(amount>0){ prefix = "+" }
 
-  let prefix = "+";
-  if(amount<0){ prefix = "-" }
+  let name = isAdmin() ? "admin" : Libs.commonLib.getLinkFor(from_user);
+  to_user.telegramid = to_user.id;
 
-  let name = isAdmin() ? "admin" : Libs.commonLib.getNameFor(from_user);
-  let other_name = Libs.commonLib.getNameFor(to_user);
+  let other_name = Libs.commonLib.getLinkFor(to_user);
   if(operation){ operation+= "\n" }
   if(!operation){ operation = "" }
   broadcastToChanell(operation + name + " > " + other_name + ": " + prefix + amount + "💎");
