@@ -108,7 +108,7 @@ if(json.note&&(json.note!="")){
 broadcastOperation(
    json.amount,
    user,
-   { username: "id-" + json.to_tg_id }, 
+   { id: json.to_tg_id }, 
    note
 )
 
