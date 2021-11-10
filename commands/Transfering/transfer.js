@@ -24,10 +24,10 @@ function successMessage(res, amount){
   if(options.reply_to_message){
     to_msg = options.reply_to_message.message_id;
   }
-  let prefix = "+";
-  if(amount<0){ prefix = "-" }
+  let prefix = "";
+  if(amount>0){ prefix = "+" }
   
-  name = isAdmin() ? "admin" : Libs.commonLib.getNameFor(user);
+  name = isAdmin() ? "admin" : Libs.commonLib.getLinkFor(user);
   let msg = prefix + amount + " 💎 from " + name + ".\nYou have: " + res.value() + "💎";
 
   let transferred_to = options.reply_to_message.from;
@@ -39,7 +39,7 @@ function successMessage(res, amount){
 function canBeAngry(amount){
   if(isAdmin()){ return true }  // admin can be very angry
   if(canRemoveByAngryPoints(amount)) {return true}
-  return amount >= 0
+  return amount > 0
 }
 
 function transferByUser(res, anotherRes, amount){
@@ -57,6 +57,7 @@ function canRemoveByAngryPoints(removalPoints) {
     return false
   }
   var angryPointsMaxLimit = Libs.ResourcesLib.userRes("angryPointsMaxLimit")
+  if(angryPointsMaxLimit.value() == 0){return false}
   if (-removalPoints > angryPointsMaxLimit.value()) {
     // Master can remove points without exceeding the limit
     return false
