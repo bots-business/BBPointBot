@@ -19,13 +19,17 @@ if (!request.reply_to_message) { return }
 if (!isNumeric(message)) {
   return
 }
+if(request.sender_chat != undefined){
 if(request.sender_chat.type == "channel"){
 Bot.sendMessage("You can't transfer your bb point as channel!")
-  return
-  }
+return
+}
+}
+if(request.reply_to_message.sender_chat != undefined){
 if(request.reply_to_message.sender_chat.type == "channel"){
   Bot.sendMessage("You can't transfer your bb point to a channel.")
   return
+}
 }
 if(request.reply_to_message.from.username==bot.name){
   Bot.sendMessage("I don't need your BB Points 😅")
@@ -40,4 +44,3 @@ Bot.run({
     reply_to_message: request.reply_to_message
   }
 })
-
