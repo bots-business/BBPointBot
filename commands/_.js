@@ -20,9 +20,13 @@ if (!isNumeric(message)) {
   return
 }
 if(request.sender_chat.type == "channel"){
-Bot.sendMessage("*Sorry, Only users can give bb points to other*")
+Bot.sendMessage("You can't transfer your bb point as channel!")
+  return
   }
-
+if(request.reply_to_message.sender_chat.type == "channel"){
+  Bot.sendMessage("You can't transfer your bb point to a channel.")
+  return
+}
 if(request.reply_to_message.from.username==bot.name){
   Bot.sendMessage("I don't need your BB Points 😅")
   return
